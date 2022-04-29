@@ -67,7 +67,7 @@ def main():
   args = parser.parse_args()
 
   input_dataset_dir = os.path.join(args.input_model_dir, args.dataset)
-  tflite_names = next(os.walk(input_dataset_dir))[1]
+  tflite_names = next(os.walk(input_dataset_dir))[0]
   #tflite_names = ["efficientnet_cifar10_seed1000_tf_use_stats"]
   print("Found", len(tflite_names), "models.")
 
@@ -88,7 +88,7 @@ def main():
   # Looping through all the tflite models
   for c, tflite_name in enumerate(tflite_names):
     tflite_dir = os.path.join(input_dataset_dir, tflite_name)
-    model_path = os.path.join(tflite_dir, "tflites", tflite_name + model_postfix)
+    model_path = tflite_dir + model_postfix
     log_path = os.path.join(output_dataset_log_dir, tflite_name + '.log')
 
     interpreter = make_interpreter(model_path_or_content=model_path, delegate=delegate)
