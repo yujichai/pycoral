@@ -95,7 +95,7 @@ def main():
 
     input_tensor = interpreter.tensor(interpreter.get_input_details()[0]['index'])
     np.random.seed(12345)
-    input_tensor()[0] = np.random.randint(0, 256, size=input_tensor().shape[1:], dtype=np.uint8)
+    input_tensor()[0] = np.random.randint(-128, 128, size=input_tensor().shape[1:], dtype=np.int8)
 
     # Run inference
     # print('----INFERENCE TIME----')
