@@ -107,13 +107,14 @@ def main():
       start = time.perf_counter()
       interpreter.invoke()
       inference_time = time.perf_counter() - start
-      inference_time_array[i] = inference_time
+      inference_time_array[i] = inference_time * 1000
       print('%.1fms' % (inference_time * 1000))
 
     # print('-------RESULTS--------')
     f = open(log_path, "w")
-    f.write("avg std count")
-    f.write('%f %f %d' % (inference_time_array.mean(), inference_time_array.std(), args.count))
+    f.write('inference_time (ms)\n')
+    f.write('avg std count\n')
+    f.write('%f %f %d\n' % (inference_time_array.mean(), inference_time_array.std(), args.count))
     f.close()
 
     if (c+1) % args.print_interval == 0:
