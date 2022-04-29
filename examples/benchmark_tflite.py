@@ -90,8 +90,8 @@ def main():
     interpreter.allocate_tensors()
 
     # Model must be uint8 quantized
-    if common.input_details(interpreter, 'dtype') != np.uint8:
-      raise ValueError('Only support uint8 input type.')
+    #if common.input_details(interpreter, 'dtype') != np.uint8:
+    #  raise ValueError('Only support uint8 input type.')
 
     input_tensor = interpreter.tensor(interpreter.get_input_details()[0]['index'])
     np.random.seed(12345)
