@@ -73,7 +73,7 @@ def main():
 
   output_dataset_log_dir = os.path.join(args.output_log_dir, args.dataset)
   if not os.path.exists(output_dataset_log_dir):
-    os.mkdir(output_dataset_log_dir)
+    os.makedirs(output_dataset_log_dir)
 
   # load delegate
   delegate = load_edgetpu_delegate()
