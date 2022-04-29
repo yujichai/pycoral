@@ -75,10 +75,6 @@ def main():
   if not os.path.exists(output_dataset_log_dir):
     os.mkdir(output_dataset_log_dir)
 
-  model_postfix = "_INT8.tflite"
-  if args.dataset in DATASETS_WO_INT8:
-    model_postfix = ".tflite"
-
   # load delegate
   delegate = load_edgetpu_delegate()
 
@@ -87,8 +83,8 @@ def main():
 
   # Looping through all the tflite models
   for c, tflite_name in enumerate(tflite_names):
-    model_path = os.path.join(input_dataset_dir, tflite_name + model_postfix)
-    log_path = os.path.join(output_dataset_log_dir, tflite_name + '.log')
+    model_path = os.path.join(input_dataset_dir, tflite_name)
+    log_path = os.path.join(output_dataset_log_dir, tflite_name.split('.')[0] + '.log')
 
     interpreter = make_interpreter(model_path_or_content=model_path, delegate=delegate)
     interpreter.allocate_tensors()
