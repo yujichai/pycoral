@@ -72,6 +72,8 @@ def main():
   print("Found", len(tflite_names), "models.")
 
   output_dataset_log_dir = os.path.join(args.output_log_dir, args.dataset)
+  if not os.path.exists(output_dataset_log_dir):
+    os.mkdir(output_dataset_log_dir)
 
   model_postfix = "_INT8.tflite"
   if args.dataset in DATASETS_WO_INT8:
