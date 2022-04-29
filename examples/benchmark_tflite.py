@@ -67,7 +67,7 @@ def main():
   args = parser.parse_args()
 
   input_dataset_dir = os.path.join(args.input_model_dir, args.dataset)
-  tflite_names = next(os.walk(input_dataset_dir))[0]
+  tflite_names = next(os.walk(input_dataset_dir))[2]
   #tflite_names = ["efficientnet_cifar10_seed1000_tf_use_stats"]
   print("Found", len(tflite_names), "models.")
 
