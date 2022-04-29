@@ -1,6 +1,6 @@
 DATASET=cifar10_july8 #ssd_300_reduced cifar10_july8 kws_chu_july19 imagenet_may26 vit_cifar100
 INPUT_MODEL_DIR=./model_examples
-OUTPUT_LOG_DIR=./model_examples
+OUTPUT_LOG_DIR=./log_examples
 WARM_COUNT=3
 COUNT=10
 PRINT_INTERVAL=1000
