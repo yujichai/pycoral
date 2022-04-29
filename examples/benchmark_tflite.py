@@ -87,8 +87,7 @@ def main():
 
   # Looping through all the tflite models
   for c, tflite_name in enumerate(tflite_names):
-    tflite_dir = os.path.join(input_dataset_dir, tflite_name)
-    model_path = tflite_dir + model_postfix
+    model_path = os.path.join(input_dataset_dir, tflite_name + model_postfix)
     log_path = os.path.join(output_dataset_log_dir, tflite_name + '.log')
 
     interpreter = make_interpreter(model_path_or_content=model_path, delegate=delegate)
