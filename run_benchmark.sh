@@ -6,7 +6,7 @@ COUNT=10
 PRINT_INTERVAL=1000
 BREAK_FLAG=0
 
-python3 examples/benchmark_tflite.py
+python3 examples/benchmark_tflite.py \
 -d $DATASET \
 -i $INPUT_MODEL_DIR \
 -o $OUTPUT_LOG_DIR \
