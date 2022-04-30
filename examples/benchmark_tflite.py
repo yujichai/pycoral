@@ -108,7 +108,7 @@ def main():
       interpreter.invoke()
       inference_time = time.perf_counter() - start
       inference_time_array[i] = inference_time * 1000
-      print('%.1fms' % (inference_time * 1000))
+    # print('%.1fms' % (inference_time * 1000))
 
     # print('-------RESULTS--------')
     f = open(log_path, "w")

@@ -1,6 +1,6 @@
 DATASET=cifar10_july8 #ssd_300_reduced cifar10_july8 kws_chu_july19 imagenet_may26 vit_cifar100
-INPUT_MODEL_DIR=./test_model
-OUTPUT_LOG_DIR=./test_log
+INPUT_MODEL_DIR=/home/mendel/disk-USB/model-c
+OUTPUT_LOG_DIR=/home/mendel/disk-USB/log-EdgeTPU
 WARM_COUNT=3
 COUNT=10
 PRINT_INTERVAL=1000
