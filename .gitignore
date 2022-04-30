@@ -3,6 +3,7 @@
 /dist/
 /pycoral/pybind/
 /tflite_runtime/
+/test_log/
 __pycache__
 *.egg-info
 *.tar.gz
@@ -10,3 +11,4 @@ __pycache__
 *.deb
 *.buildinfo
 *.changes
+*.code-workspace
