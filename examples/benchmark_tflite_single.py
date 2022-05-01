@@ -58,7 +58,7 @@ def main():
 
   # Looping through all the tflite models
   model_path = args.input_model_path
-  model_name = model_path.split('.')[0].split('/')[-1]
+  model_name = (model_path.split('.')[0]).split('/')[-1]
   log_path = os.path.join(args.output_dataset_log_dir, model_name + '.log')
 
   interpreter = make_interpreter(model_path_or_content=model_path, delegate=delegate)
