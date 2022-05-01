@@ -40,9 +40,7 @@ def main():
   parser = argparse.ArgumentParser(
       formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument(
-      '-m', '--model_name', required=True, help='Name of the dataset.')
-  parser.add_argument(
-      '-i', '--input_dataset_dir', required=True, help='Input directory of tflite models')
+      '-i', '--input_model_path', required=True, help='Input directory of tflite models')
   parser.add_argument(
       '-o', '--output_dataset_log_dir', required=True, help='Output directory of benchmark logs')
   parser.add_argument(
@@ -59,8 +57,9 @@ def main():
   inference_time_array = np.zeros(args.count)
 
   # Looping through all the tflite models
-  model_path = os.path.join(args.input_dataset_dir, args.model_name)
-  log_path = os.path.join(args.output_dataset_log_dir, args.model_name.split('.')[0] + '.log')
+  model_path = args.input_model_path
+  model_name = model_path.split('.')[0].split('/')[-1]
+  log_path = os.path.join(args.output_dataset_log_dir, model_name + '.log')
 
   interpreter = make_interpreter(model_path_or_content=model_path, delegate=delegate)
   interpreter.allocate_tensors()
