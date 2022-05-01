@@ -7,7 +7,7 @@ PRINT_INTERVAL=1000
 
 COUNTER=0
 for f in $INPUT_MODEL_DIR/*; do
-    echo $f
+    #echo $f
     MODEL_PATH=$f
     if [ -f "$MODEL_PATH" ]; then
         python3 examples/benchmark_tflite_single.py -i $f -o $OUTPUT_DATASET_LOG_DIR -w $WARM_COUNT -c $COUNT 
