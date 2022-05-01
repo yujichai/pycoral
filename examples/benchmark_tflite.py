@@ -64,12 +64,27 @@ def main():
   parser.add_argument(
       '-b', '--break_flag', type=int, default=0,
       help='The flag of break')
+  parser.add_argument(
+      '-s', '--start_index', type=int, default=0,
+      help='Start index of the dataset')
+  parser.add_argument(
+      '-e', '--end_index', type=int, default=100000,
+      help='End index of the dataset')
   args = parser.parse_args()
 
   input_dataset_dir = os.path.join(args.input_model_dir, args.dataset)
   tflite_names = next(os.walk(input_dataset_dir))[2]
   #tflite_names = ["efficientnet_cifar10_seed1000_tf_use_stats"]
+  dataset_length = len(tflite_names)
   print("Found", len(tflite_names), "models.")
+
+  si = args.start_index
+  ei = args.end_index
+  if ei > dataset_length:
+    ei = dataset_length
+  tflite_names = tflite_names[si, ei]
+  print("Benchmarking model index from", si, "to", ei)
+  print("Benchmarking", ei-si, "models.")
 
   output_dataset_log_dir = os.path.join(args.output_log_dir, args.dataset)
   if not os.path.exists(output_dataset_log_dir):
@@ -81,6 +96,7 @@ def main():
   # Init the np array
   inference_time_array = np.zeros(args.count)
 
+  print('----Starting Benchmark----')
   # Looping through all the tflite models
   for c, tflite_name in enumerate(tflite_names):
     model_path = os.path.join(input_dataset_dir, tflite_name)
@@ -121,6 +137,7 @@ def main():
       print(c+1, "models measured @", datetime.datetime.now())
     if args.break_flag != 0:
       break
+  print('----Ending Benchmark----')
 
 
 if __name__ == '__main__':
