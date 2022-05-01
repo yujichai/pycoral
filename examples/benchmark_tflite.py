@@ -82,7 +82,7 @@ def main():
   ei = args.end_index
   if ei > dataset_length:
     ei = dataset_length
-  tflite_names = tflite_names[si, ei]
+  tflite_names = tflite_names[si: ei]
   print("Benchmarking model index from", si, "to", ei)
   print("Benchmarking", ei-si, "models.")
 
