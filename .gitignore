@@ -12,3 +12,4 @@ __pycache__
 *.buildinfo
 *.changes
 *.code-workspace
+/coral_ssh_command.sh
